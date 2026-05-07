@@ -10,6 +10,8 @@
         .tab-active { border-bottom: 2px solid #0ea5e9; color: #0ea5e9; font-weight: 600; }
         .tab-inactive { border-bottom: 2px solid transparent; color: #64748b; }
         .tab-inactive:hover { color: #0f172a; border-bottom: 2px solid #cbd5e1; }
+        .audience-active { background-color: #0ea5e9; color: white; }
+        .audience-inactive { background-color: #f1f5f9; color: #64748b; }
         @keyframes fadeOut {
             0% { opacity: 1; transform: translateY(0); }
             80% { opacity: 1; transform: translateY(0); }
@@ -22,7 +24,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-    <!-- Header & Disclaimer -->
+    <!-- Header & Direct Link -->
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-20">
         <div class="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
@@ -31,165 +33,226 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-2xl leading-tight text-slate-900">CRISP</h1>
-                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">ESP Amsterdam • Interactive Manual</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Clinical Reasoning Interactive Student Partner</p>
                 </div>
             </div>
-            <div class="bg-amber-50 border border-amber-200 text-amber-800 text-sm px-4 py-2 rounded-lg max-w-md flex gap-3 items-start shadow-sm">
-                <span class="text-amber-500 font-bold text-lg leading-none">&#9888;</span>
-                <p class="leading-snug"><strong>Education Only.</strong> CRISP is an educational tool. It does not provide medical diagnosis and cannot replace lecturer/supervisor guidance.</p>
+            
+            <!-- Most Highlighted Tool Link -->
+            <div class="flex flex-col items-center md:items-end">
+                <a href="https://chatgpt.com/g/g-698c82c9a05c819196a46e712486caac-crisp-2-0" target="_blank" class="bg-sky-600 hover:bg-sky-700 text-white font-black py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all transform hover:scale-110 animate-pulse hover:animate-none">
+                    <span>LAUNCH CRISP TOOL</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 sm:px-6 lg:px-8 w-full space-y-16">
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 sm:px-6 lg:px-8 w-full space-y-12">
         
         <!-- Hero Section -->
-        <div class="text-center max-w-3xl mx-auto">
-            <h2 class="text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">Master Clinical Reasoning.</h2>
-            <p class="text-xl text-slate-600 mb-8 leading-relaxed">
-                CRISP is your AI coaching partner. It doesn't give you the answers; it coaches you to <em>think</em>. 
-                Start by copying a prompt below, or scroll down to learn how CRISP works.
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 tracking-tight uppercase">Master Clinical Reasoning in Physiotherapy Learning</h2>
+            <p class="text-xl text-slate-600 mb-6 leading-relaxed">
+                CRISP is a conversational AI tool designed specifically for physiotherapy students. By interacting through natural chat, you can explore cases and concepts in an easier way.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#prompt-library" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-colors duration-200">
-                    &#128203; Get a Starter Prompt
-                </a>
-                <a href="#knowledge-base" class="inline-block bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold px-6 py-3 rounded-lg shadow-sm transition-colors duration-200">
-                    &#128214; Read the Manual
-                </a>
+            
+            <div class="bg-amber-50 border border-amber-200 text-amber-800 rounded-xl p-6 mb-10 inline-block text-left shadow-sm max-w-2xl">
+                <div class="flex items-start gap-3">
+                    <span class="text-amber-500 text-2xl font-bold leading-none">⚠️</span>
+                    <div>
+                        <p class="font-bold mb-1">Important Notes:</p>
+                        <p class="text-sm">Education only. CRISP does not provide medical diagnosis and cannot replace lecturer/supervisor guidance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audience Toggle -->
+            <div class="block">
+                <div class="inline-flex p-1 bg-slate-200 rounded-xl mb-12 shadow-inner">
+                    <button onclick="switchAudience('student')" id="btn-student" class="px-10 py-3 rounded-lg font-bold transition-all audience-active">For Students</button>
+                    <button onclick="switchAudience('teacher')" id="btn-teacher" class="px-10 py-3 rounded-lg font-bold transition-all audience-inactive">For Teachers</button>
+                </div>
             </div>
         </div>
 
-        <!-- SECTION 1: Interactive Prompt Library -->
-        <section id="prompt-library" class="scroll-mt-24">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="text-3xl">&#128172;</span>
-                <h2 class="text-2xl font-bold text-slate-900">1. Starter Prompt Library</h2>
-            </div>
-            
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                <!-- Tabs -->
-                <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50 px-2 scrollbar-hide" role="tablist">
-                    <button class="tab-btn tab-active px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2 transition-colors" data-target="tab-case">
-                        <span>&#128100;</span> Practice Cases
-                    </button>
-                    <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2 transition-colors" data-target="tab-step">
-                        <span>&#128202;</span> HOAC-II Steps
-                    </button>
-                    <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2 transition-colors" data-target="tab-concept">
-                        <span>&#128161;</span> Concept Help
-                    </button>
-                    <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2 transition-colors" data-target="tab-save">
-                        <span>&#128190;</span> Save & Continue
-                    </button>
+        <!-- Audience: Student Section -->
+        <div id="section-student" class="space-y-16">
+            <section id="student-intro" class="max-w-3xl mx-auto text-center border-b border-slate-200 pb-12">
+                <p class="text-lg text-slate-700 italic">It coaches you to think — identifying gaps in reasoning and guiding you through the structured HOAC-II framework.</p>
+            </section>
+
+            <section id="prompt-library" class="scroll-mt-24">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-3xl">💬</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Student Prompt Library</h2>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50 px-2 scrollbar-hide" role="tablist">
+                        <button class="tab-btn tab-active px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2" data-target="tab-case">
+                            <span>👤</span> Practice Cases
+                        </button>
+                        <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2" data-target="tab-step">
+                            <span>📊</span> HOAC-II Steps
+                        </button>
+                        <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2" data-target="tab-concept">
+                            <span>💡</span> Concept Help
+                        </button>
+                        <button class="tab-btn tab-inactive px-5 py-4 text-sm whitespace-nowrap focus:outline-none flex items-center gap-2" data-target="tab-save">
+                            <span>💾</span> Save & Continue
+                        </button>
+                    </div>
+
+                    <div class="p-6 min-h-[300px]">
+                        <div id="tab-case" class="tab-pane block">
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Practice Case Library</h3>
+                            <p class="text-slate-600 text-sm mb-6">By using prompts and interacting with CRISP, exploring the library is straightforward. Try these examples:</p>
+                            <div class="grid gap-4 md:grid-cols-3">
+                                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <div class="text-xs font-bold text-sky-600 uppercase mb-2">Knee OA</div>
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"I would like to practice a case of Knee Osteoarthritis based on the KNGF guidelines. Let's start with HOAC-II Step 1."</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <div class="text-xs font-bold text-sky-600 uppercase mb-2">Low Back Pain</div>
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"Can we do a practice case focusing on non-specific Low Back Pain? Please present the patient scenario."</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <div class="text-xs font-bold text-sky-600 uppercase mb-2">Neurological</div>
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"Give me a complex Stroke case. I want to practice setting up my assessment strategy."</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-save" class="tab-pane hidden">
+                            <h3 class="text-lg font-bold text-slate-800 mb-1">Session Management</h3>
+                            <p class="text-slate-600 text-sm mb-4">Follow these steps to never lose progress during your studies.</p>
+                            <div class="grid gap-4 md:grid-cols-2">
+                                <div class="border border-sky-200 rounded-lg p-5 bg-sky-50 hover:bg-sky-100 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">Before you leave:</div>
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"Can you summarise what we have done so far in this case, so I can copy the text and continue next time?"</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                                <div class="border border-sky-200 rounded-lg p-5 bg-sky-50 hover:bg-sky-100 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">When you return:</div>
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"Here is the summary of a case I was working on previously: [Paste summary here]. Let's continue from where we left off."</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-step" class="tab-pane hidden">
+                            <h3 class="text-lg font-bold text-slate-800 mb-4">HOAC-II Step Guidance</h3>
+                            <div class="grid gap-4 md:grid-cols-2">
+                                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"I am working on Step 2. Can you help me generate falsification criteria for my hypothesis?"</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-concept" class="tab-pane hidden">
+                            <h3 class="text-lg font-bold text-slate-800 mb-4">Theoretical Explanations</h3>
+                            <div class="grid gap-4 md:grid-cols-2">
+                                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
+                                    <p class="text-slate-800 font-medium pr-6 text-sm">"How exactly do I link an ICF problem to a body function mediator? Can you give me two clear examples?"</p>
+                                    <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Audience: Teacher Section -->
+        <div id="section-teacher" class="hidden space-y-16">
+            <section class="max-w-4xl mx-auto">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="text-3xl">👨‍🏫</span>
+                    <h2 class="text-3xl font-bold text-slate-900">Lecturer Integration Guide</h2>
+                </div>
+                
+                <!-- Marketing Strategy Section -->
+                <div class="bg-sky-600 text-white p-8 rounded-2xl shadow-xl mb-12">
+                    <h3 class="text-2xl font-bold mb-4">Crisp assists you to teach clinical reasoning</h3>
+                    <p class="text-sky-50 leading-relaxed mb-6">It coaches students to think — recognizing learning opportunities instead of just pointing out errors.</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-4 rounded-lg border border-white/20">
+                            <h4 class="font-bold mb-2">Interactive Classes</h4>
+                            <p class="text-sm">Use CRISP during live sessions to solve steps together and spark discussion.</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg border border-white/20">
+                            <h4 class="font-bold mb-2">Assignment Support</h4>
+                            <p class="text-sm">Direct students to CRISP to refine their logic before they submit final portfolios.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tab Content -->
-                <div class="p-6 min-h-[300px]">
-                    
-                    <!-- Tab 1: Practice Cases -->
-                    <div id="tab-case" class="tab-pane block animate-fadeIn">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-800">Guided Practice Cases</h3>
-                                <p class="text-slate-600 text-sm">Choose from CRISP's built-in case library (Knee OA, LBP, Stroke, ACL, COPD) and start from HOAC-II Step 1.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-600 uppercase mb-2">KNGF: Knee OA</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"I would like to practice a case of Knee Osteoarthritis based on the KNGF guidelines. Let's start with HOAC-II Step 1."</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
-                            </div>
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-600 uppercase mb-2">KNGF: Low Back Pain</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"Can we do a practice case focusing on non-specific Low Back Pain? Please present the patient scenario."</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
-                            </div>
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-600 uppercase mb-2">Neurological: Stroke</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"Give me a complex Stroke case. I want to practice setting up my assessment strategy."</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
-                            </div>
-                        </div>
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">Teaching with CRISP</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            CRISP assists you in teaching by providing a 24/7 coaching partner for students. This makes it easier to refine student logic by identifying specific areas for discussion when errors are flagged.
+                        </p>
+                        <h4 class="font-bold text-slate-800 mb-3 uppercase text-xs tracking-widest">Case Study Library</h4>
+                        <ul class="space-y-2 text-slate-700 text-sm">
+                            <li class="flex items-center gap-2">✅ Standard single-session cases</li>
+                            <li class="flex items-center gap-2">✅ Longitudinal cases (multiple stages)</li>
+                            <li class="flex items-center gap-2">✅ ESP Curriculum-aligned pathologies</li>
+                        </ul>
                     </div>
 
-                    <!-- Tab 2: HOAC-II Step -->
-                    <div id="tab-step" class="tab-pane hidden animate-fadeIn">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1">Drill a Specific HOAC-II Step</h3>
-                        <p class="text-slate-600 text-sm mb-4">Verify your workflow for a specific part of the reasoning process.</p>
-                        
-                        <div class="grid gap-4 md:grid-cols-2">
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-600 uppercase mb-2">Step 2: Hypotheses</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"I am working on HOAC-II Step 2 for my patient. Can you help me generate testable falsification criteria for my hypothesis?"</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">Aligning with the Rubric</h3>
+                        <p class="text-slate-600 text-sm mb-4">CRISP explicitly coaches students across six key domains:</p>
+                        <div class="grid grid-cols-1 gap-2 text-sm">
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">a</span>
+                                <span class="font-medium">Problem framing</span>
                             </div>
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-600 uppercase mb-2">Step 4: Evaluation</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"I have my assessment findings (Step 4). Can you help me evaluate if my original hypotheses are supported or falsified?"</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">b</span>
+                                <span class="font-medium">Hypothesis-mediated logic</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 3: Concept Help -->
-                    <div id="tab-concept" class="tab-pane hidden animate-fadeIn">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1">Understand Reasoning Concepts</h3>
-                        <p class="text-slate-600 text-sm mb-4">Copy these starters to get clear explanations of core frameworks from CRISP.</p>
-                        
-                        <div class="grid gap-4 md:grid-cols-2">
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"How exactly do I link an ICF problem to a body function mediator? Can you give me two clear examples?"</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">c</span>
+                                <span class="font-medium">Assessment-decision logic</span>
                             </div>
-                            <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:bg-sky-50 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"What exactly does 'falsification criteria' mean in the context of HOAC-II?"</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">d</span>
+                                <span class="font-medium">Goal-coherence intervention</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">e</span>
+                                <span class="font-medium">Reflection</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
+                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">f</span>
+                                <span class="font-medium">Self-reflection (Non-graded)</span>
                             </div>
                         </div>
+                        <p class="mt-4 text-xs text-slate-500 italic">CRISP does not provide grades, encouraging honest self-correction.</p>
                     </div>
-
-                    <!-- Tab 4: Save & Continue -->
-                    <div id="tab-save" class="tab-pane hidden animate-fadeIn">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1">Session Management</h3>
-                        <p class="text-slate-600 text-sm mb-4">CRISP doesn't have a built-in memory of past chats. Use these tools to never lose progress.</p>
-                        
-                        <div class="grid gap-4 md:grid-cols-2">
-                            <div class="border border-sky-200 rounded-lg p-5 bg-sky-50 hover:bg-sky-100 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">Before you leave:</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"Can you summarise what we have done so far in this case, so I can copy the text and continue next time?"</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
-                            </div>
-                            <div class="border border-sky-200 rounded-lg p-5 bg-sky-50 hover:bg-sky-100 transition-colors group relative cursor-pointer" onclick="copyCardPrompt(this)">
-                                <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">When you return:</div>
-                                <p class="text-slate-800 font-medium pr-6 text-sm">"Here is the summary of a case I was working on previously: [Paste summary here]. Let's continue from where we left off."</p>
-                                <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600 focus:outline-none">&#128203;</button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <hr class="border-slate-200">
 
-        <!-- SECTION 2: Knowledge Base -->
+        <!-- SECTION 2: Common User Manual -->
         <section id="knowledge-base" class="scroll-mt-24">
             <div class="flex items-center gap-3 mb-8">
-                <span class="text-3xl">&#128218;</span>
-                <h2 class="text-2xl font-bold text-slate-900">2. How CRISP Works (User Manual)</h2>
+                <span class="text-3xl">📚</span>
+                <h2 class="text-2xl font-bold text-slate-900">Common User Manual</h2>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                
                 <div class="lg:col-span-2 space-y-8">
-                    
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">The 3 Core Frameworks</h3>
-                        <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="grid sm:grid-cols-1 gap-4">
                             <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div class="text-sky-600 font-bold text-lg mb-1">HOAC-II</div>
                                 <p class="text-sm text-slate-600 leading-relaxed">The 7-step clinical reasoning algorithm. CRISP guides you through identifying existing problems, forming hypotheses, and testing strategies.</p>
@@ -204,64 +267,25 @@
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">Feedback & Socratic Coaching</h3>
-                        <p class="text-sm text-slate-600 mb-4">CRISP doesn't give answers; it asks questions. Based on your inputs, it will adopt one of three feedback modes:</p>
-                        
-                        <div class="space-y-3">
-                            <div class="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-                                <div class="text-2xl mt-1">&#128681;</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-800">Interrupt</h4>
-                                    <p class="text-sm text-slate-600">CRISP stops you immediately if you miss a Red Flag or make a critical reasoning error that compromises patient safety.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-                                <div class="text-2xl mt-1">&#129300;</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-800">Challenge</h4>
-                                    <p class="text-sm text-slate-600">CRISP will ask "Why?" or "What else?" to push you to justify your clinical choices and reveal gaps in your logic.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-                                <div class="text-2xl mt-1">&#128077;</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-800">Coach</h4>
-                                    <p class="text-sm text-slate-600">When you're stuck, CRISP provides hints, scaffolds the next step, or gives examples to help you find the way forward.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="space-y-6">
-                    
                     <div class="bg-slate-800 text-white p-6 rounded-xl shadow-md">
                         <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
-                            <span class="text-rose-400">&#10006;</span> What CRISP Will NOT Do
+                            <span class="text-rose-400">✖</span> CRISP Guardrails
                         </h4>
                         <ul class="text-sm text-slate-300 space-y-3">
-                            <li class="flex gap-2 items-start">
-                                <span class="text-slate-500">•</span>
-                                <span><strong>Give answers without effort:</strong> It will not write your assignment or solve the case for you.</span>
-                            </li>
-                            <li class="flex gap-2 items-start">
-                                <span class="text-slate-500">•</span>
-                                <span><strong>Diagnose real patients:</strong> It is strictly for simulated educational scenarios.</span>
-                            </li>
-                            <li class="flex gap-2 items-start">
-                                <span class="text-slate-500">•</span>
-                                <span><strong>Replace lecturers:</strong> Always consult human supervisors for final clinical judgments.</span>
-                            </li>
+                            <li><strong>Will not</strong> give answers without reasoning.</li>
+                            <li><strong>Will not</strong> diagnose real patients.</li>
+                            <li><strong>Will not</strong> bypass lecturer supervision.</li>
                         </ul>
                     </div>
-
+                    
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h4 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <span class="text-xl">&#9888;</span> Important System Traits
+                            <span class="text-xl">⚠️</span> Important System Traits
                         </h4>
-                        <ul class="text-sm text-slate-600 space-y-3 mb-5">
+                        <ul class="text-sm text-slate-600 space-y-3">
                             <li class="flex gap-2 items-start">
                                 <span class="text-slate-400 mt-0.5">•</span>
                                 <span><strong>Message limits:</strong> Free ChatGPT accounts have daily caps on complex GPT messages. Keep prompts focused.</span>
@@ -275,23 +299,7 @@
                                 <span><strong>No automatic grading:</strong> Your lecturer cannot see your chat logs unless you share them yourself.</span>
                             </li>
                         </ul>
-                        
-                        <div class="border-t border-slate-100 pt-5 mt-2">
-                            <h5 class="font-bold text-sm text-slate-800 mb-2 flex items-center gap-2">
-                                <span class="text-lg">&#128190;</span> How to Save Your Session
-                            </h5>
-                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-                                To continue your reasoning later, use this prompt at the end of your session:
-                            </p>
-                            <div class="bg-sky-50 p-3 rounded text-xs font-mono text-sky-800 italic border border-sky-100 mb-3">
-                                "Summarise our progress so I can copy the text and resume this case next time."
-                            </div>
-                            <p class="text-xs text-slate-600 leading-relaxed italic">
-                                Note: Copy the resulting text into a private document (Word/Notion/Notes).
-                            </p>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -304,12 +312,29 @@
         </div>
     </footer>
 
-    <!-- Hidden textarea for legacy copy fallback -->
     <textarea id="hidden-clipboard-area" class="absolute left-[-9999px]" aria-hidden="true"></textarea>
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <script>
-        // --- Tabs ---
+        function switchAudience(type) {
+            const studentBtn = document.getElementById('btn-student');
+            const teacherBtn = document.getElementById('btn-teacher');
+            const studentSection = document.getElementById('section-student');
+            const teacherSection = document.getElementById('section-teacher');
+
+            if (type === 'student') {
+                studentBtn.classList.replace('audience-inactive', 'audience-active');
+                teacherBtn.classList.replace('audience-active', 'audience-inactive');
+                studentSection.classList.remove('hidden');
+                teacherSection.classList.add('hidden');
+            } else {
+                teacherBtn.classList.replace('audience-inactive', 'audience-active');
+                studentBtn.classList.replace('audience-active', 'audience-inactive');
+                teacherSection.classList.remove('hidden');
+                studentSection.classList.add('hidden');
+            }
+        }
+
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => {
@@ -317,41 +342,37 @@
                     b.classList.add('tab-inactive');
                 });
                 document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
-
                 btn.classList.add('tab-active');
                 btn.classList.remove('tab-inactive');
                 document.getElementById(btn.dataset.target).classList.remove('hidden');
             });
         });
 
-        // --- Copy Logic ---
-        function executeCopy(text, btnElement, cardElement) {
+        function executeCopy(text, btnElement) {
             const area = document.getElementById('hidden-clipboard-area');
             area.value = text;
             area.select();
             try {
                 document.execCommand('copy');
-                showToast("Copied to clipboard!");
-                if (btnElement) {
-                    const oldHtml = btnElement.innerHTML;
-                    btnElement.innerHTML = '&#10003;';
-                    setTimeout(() => btnElement.innerHTML = oldHtml, 2000);
-                }
+                showToast("Prompt copied!");
+                const oldHtml = btnElement.innerHTML;
+                btnElement.innerHTML = '✅';
+                setTimeout(() => btnElement.innerHTML = oldHtml, 2000);
             } catch (err) {
-                showToast("Failed to copy. Please select manually.", true);
+                showToast("Failed to copy", true);
             }
         }
 
         function copyCardPrompt(card) {
             const text = card.querySelector('p').innerText;
             const btn = card.querySelector('button');
-            executeCopy(text, btn, card);
+            executeCopy(text, btn);
         }
 
         function showToast(msg, isErr = false) {
             const toast = document.createElement('div');
-            toast.className = `toast ${isErr ? 'bg-rose-800' : 'bg-slate-900'} text-white px-5 py-3 rounded-lg shadow-xl text-sm font-medium flex items-center gap-3 border border-slate-700`;
-            toast.innerHTML = `<span class="${isErr ? 'text-rose-300' : 'text-green-400'}">&#10003;</span> ${msg}`;
+            toast.className = `toast ${isErr ? 'bg-rose-800' : 'bg-slate-900'} text-white px-5 py-3 rounded-lg shadow-xl text-sm font-medium border border-slate-700`;
+            toast.innerHTML = msg;
             document.getElementById('toast-container').appendChild(toast);
             setTimeout(() => toast.remove(), 2500);
         }
