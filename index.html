@@ -24,7 +24,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-    <!-- Header & Direct Link -->
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-20">
         <div class="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
@@ -37,7 +36,6 @@
                 </div>
             </div>
             
-            <!-- Most Highlighted Tool Link -->
             <div class="flex flex-col items-center md:items-end">
                 <a href="https://chatgpt.com/g/g-698c82c9a05c819196a46e712486caac-crisp-2-0" target="_blank" class="bg-sky-600 hover:bg-sky-700 text-white font-black py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all transform hover:scale-110 animate-pulse hover:animate-none">
                     <span>LAUNCH CRISP TOOL</span>
@@ -49,9 +47,8 @@
 
     <main class="flex-grow max-w-6xl mx-auto px-4 py-10 sm:px-6 lg:px-8 w-full space-y-12">
         
-        <!-- Hero Section -->
         <div class="text-center max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6 tracking-tight uppercase">Master Clinical Reasoning in Physiotherapy Learning</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-6 tracking-tight uppercase">Master Clinical Reasoning in Physiotherapy Learning</h2>
             <p class="text-xl text-slate-600 mb-6 leading-relaxed">
                 CRISP is a conversational AI tool designed specifically for physiotherapy students. By interacting through natural chat, you can explore cases and concepts in an easier way.
             </p>
@@ -66,7 +63,6 @@
                 </div>
             </div>
 
-            <!-- Audience Toggle -->
             <div class="block">
                 <div class="inline-flex p-1 bg-slate-200 rounded-xl mb-12 shadow-inner">
                     <button onclick="switchAudience('student')" id="btn-student" class="px-10 py-3 rounded-lg font-bold transition-all audience-active">For Students</button>
@@ -75,7 +71,6 @@
             </div>
         </div>
 
-        <!-- Audience: Student Section -->
         <div id="section-student" class="space-y-16">
             <section id="student-intro" class="max-w-3xl mx-auto text-center border-b border-slate-200 pb-12">
                 <p class="text-lg text-slate-700 italic">It coaches you to think — identifying gaps in reasoning and guiding you through the structured HOAC-II framework.</p>
@@ -166,83 +161,82 @@
             </section>
         </div>
 
-        <!-- Audience: Teacher Section -->
         <div id="section-teacher" class="hidden space-y-16">
-            <section class="max-w-4xl mx-auto">
+            <section class="max-w-5xl mx-auto">
                 <div class="flex items-center gap-3 mb-8">
                     <span class="text-3xl">👨‍🏫</span>
-                    <h2 class="text-3xl font-bold text-slate-900">Lecturer Integration Guide</h2>
+                    <h2 class="text-3xl font-bold text-slate-900">Lecture Guide</h2>
                 </div>
                 
-                <!-- Marketing Strategy Section -->
                 <div class="bg-sky-600 text-white p-8 rounded-2xl shadow-xl mb-12">
-                    <h3 class="text-2xl font-bold mb-4">Crisp assists you to teach clinical reasoning</h3>
-                    <p class="text-sky-50 leading-relaxed mb-6">It coaches students to think — recognizing learning opportunities instead of just pointing out errors.</p>
+                    <h3 class="text-2xl font-bold mb-4">CRISP assists you to teach clinical reasoning</h3>
+                    <p class="text-sky-50 leading-relaxed mb-6">It coaches students to think — making it easier to recognize learning opportunities instead of just pointing out errors.</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div class="bg-white/10 p-4 rounded-lg border border-white/20">
                             <h4 class="font-bold mb-2">Interactive Classes</h4>
-                            <p class="text-sm">Use CRISP during live sessions to solve steps together and spark discussion.</p>
+                            <p class="text-sm">Use CRISP during live sessions to solve steps together, review generated falsification criteria, and spark discussion.</p>
                         </div>
                         <div class="bg-white/10 p-4 rounded-lg border border-white/20">
                             <h4 class="font-bold mb-2">Assignment Support</h4>
-                            <p class="text-sm">Direct students to CRISP to refine their logic before they submit final portfolios.</p>
+                            <p class="text-sm">Direct students to CRISP to refine their logic and identify areas for improvement before submitting their assignments.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-slate-800 mb-4">Teaching with CRISP</h3>
-                        <p class="text-slate-600 leading-relaxed mb-6">
-                            CRISP assists you in teaching by providing a 24/7 coaching partner for students. This makes it easier to refine student logic by identifying specific areas for discussion when errors are flagged.
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-12">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Teaching with CRISP</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        CRISP assists you in teaching by providing a 24/7 coaching partner for students. This makes it easier to refine student logic by identifying specific areas for discussion when errors are flagged, providing clearer guidance for your lessons.
+                    </p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                            <span class="text-xl">📚</span> The Case Study Library: Standard vs. Longitudinal
+                        </h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            CRISP features a library containing both standard cases and <strong>five specific longitudinal cases (Cases 1-5)</strong>. 
                         </p>
-                        <h4 class="font-bold text-slate-800 mb-3 uppercase text-xs tracking-widest">Case Study Library</h4>
-                        <ul class="space-y-2 text-slate-700 text-sm">
-                            <li class="flex items-center gap-2">✅ Standard single-session cases</li>
-                            <li class="flex items-center gap-2">✅ Longitudinal cases (multiple stages)</li>
-                            <li class="flex items-center gap-2">✅ ESP Curriculum-aligned pathologies</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-slate-800 mb-4">Aligning with the Rubric</h3>
-                        <p class="text-slate-600 text-sm mb-4">CRISP explicitly coaches students across six key domains:</p>
-                        <div class="grid grid-cols-1 gap-2 text-sm">
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">a</span>
-                                <span class="font-medium">Problem framing</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">b</span>
-                                <span class="font-medium">Hypothesis-mediated logic</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">c</span>
-                                <span class="font-medium">Assessment-decision logic</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">d</span>
-                                <span class="font-medium">Goal-coherence intervention</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">e</span>
-                                <span class="font-medium">Reflection</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded">
-                                <span class="bg-sky-100 text-sky-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">f</span>
-                                <span class="font-medium">Self-reflection (Non-graded)</span>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-xs text-slate-500 italic">CRISP does not provide grades, encouraging honest self-correction.</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            <strong>Why Longitudinal?</strong> Patients at different stages of their life or recovery present with different types of symptoms. It can be highly misleading for students if there is an error in assessing the timeframe. A standard case would be much easier for students to solve, but these longitudinal scenarios teach teachers how to use all the evolving case information to teach properly and challenge students' dynamic reasoning.
+                        </p>
                     </div>
                 </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <span class="text-2xl">📋</span> Teacher Prompt Library
+                    </h3>
+                    <p class="text-slate-600 mb-6">
+                        Just as the Student Prompt Library helps students start a case, this library gives you a general idea of how you can use CRISP to prep your lessons. Click to copy and paste directly into CRISP.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="border border-sky-200 rounded-lg p-5 bg-white hover:bg-sky-50 transition-colors group relative cursor-pointer shadow-sm" onclick="copyCardPrompt(this)">
+                            <div class="text-xs font-bold text-sky-700 uppercase mb-2">Explore the Library</div>
+                            <p class="text-slate-800 font-medium pr-6 text-sm">"I am a teacher. Could you tell me what patient cases you have in your library?"</p>
+                            <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                        </div>
+                        
+                        <div class="border border-sky-200 rounded-lg p-5 bg-white hover:bg-sky-50 transition-colors group relative cursor-pointer shadow-sm" onclick="copyCardPrompt(this)">
+                            <div class="text-xs font-bold text-sky-700 uppercase mb-2">Review Case Timeframes</div>
+                            <p class="text-slate-800 font-medium pr-6 text-sm">"I want to use Longitudinal Case 1 for my class. Can you summarize the different stages and timeframes available for this patient?"</p>
+                            <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                        </div>
+
+                        <div class="border border-sky-200 rounded-lg p-5 bg-white hover:bg-sky-50 transition-colors group relative cursor-pointer shadow-sm md:col-span-2 md:w-1/2 md:mx-auto" onclick="copyCardPrompt(this)">
+                            <div class="text-xs font-bold text-sky-700 uppercase mb-2">Interactive Class Prep</div>
+                            <p class="text-slate-800 font-medium pr-6 text-sm">"Can you generate a brief standard case scenario about Low Back Pain that I can use to spark a 10-minute class discussion?"</p>
+                            <button class="absolute top-4 right-4 text-slate-400 group-hover:text-sky-600">📋</button>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
 
-        <hr class="border-slate-200">
+        <hr class="border-slate-200 mt-16">
 
-        <!-- SECTION 2: Common User Manual -->
-        <section id="knowledge-base" class="scroll-mt-24">
+        <section id="knowledge-base" class="scroll-mt-24 pt-8">
             <div class="flex items-center gap-3 mb-8">
                 <span class="text-3xl">📚</span>
                 <h2 class="text-2xl font-bold text-slate-900">Common User Manual</h2>
